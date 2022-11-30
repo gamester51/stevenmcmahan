@@ -1,0 +1,729 @@
+/* FONTS
+
+    font-family: 'Cinzel Decorative', cursive;
+
+    font-family: 'Encode Sans Semi Condensed', sans-serif;
+
+    font-family: 'Spectral SC', serif;
+
+    font-family: 'Syncopate', sans-serif;
+
+    */
+
+
+/* Colors
+#00c6ff
+
+
+    */
+
+
+
+
+/* Remove default margin */
+body,
+h1,
+h2,
+h3,
+h4,
+p
+{
+  margin: 0;
+}
+
+
+html {
+    background: #1f2126;
+}
+
+:root {
+    /* --g1: rgb(98, 0, 234);
+    --g2: rgb(236, 64, 122); */
+    --g1: #123456;
+    --g2: #2f89e2;
+    --clr-neon: hsl(193 100% 50%);
+
+}
+
+@keyframes background-pan {
+    from {
+        background-position: 0% center;
+    }
+
+    to {
+        background-position: -200% center;
+    }
+}
+
+@keyframes mountain-rise {}
+
+body {
+    animation: background-pan 10s linear infinite;
+    background: linear-gradient(to right, var(--g1), var(--g2), var(--g1));
+    background-size: 200%;
+    height: 100vh;
+    overflow: hidden;
+    margin: 0px;
+    position: relative;
+    /* border-top: 5px solid #123456;
+        border-left: 5px solid #123456; */
+}
+
+body.toggled {
+    animation: none;
+
+}
+
+body.toggled>.main .title {
+    opacity: 0;
+
+}
+
+/* body.toggled > .icon{
+        color: #fff;
+        transition: color 1s;
+    } */
+body.toggled>.main .icon .i {
+    opacity: 1;
+    color: #1f2126;
+    font-size: 4rem;
+    margin-top: 25%;
+    transition: color 1s, font-size 1s ease-in-out, margin-top 2s;
+    /* transition: font-size 1s; */
+}
+
+body.toggled>#tiles>tile:hover {
+    opacity: 0.1 !important;
+}
+
+
+
+#tiles {
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    z-index: 2;
+
+    display: grid;
+    grid-template-columns: repeat(var(--columns), 1fr);
+    grid-template-rows: repeat(var(--rows), 1fr);
+
+}
+
+.tile {
+    position: relative;
+
+}
+
+.tile:hover:before {
+    background-color: rgb(30, 30, 30);
+}
+
+.tile:before {
+    background-color: #1f2126;
+    content: "";
+    position: absolute;
+    inset: 0.5px;
+}
+
+#contact-container {
+    position: absolute;
+    width: 25vw;
+    height: 75vh;
+    z-index: 5;
+
+    background-color: #1f2126;
+    border-radius: 10px;
+    border: 3px solid #fff;
+
+
+}
+
+.contact {
+    text-align: center;
+    font-size: 2em;
+    font-family: 'Encode Sans Semi Condensed', sans-serif;
+    padding: 0 5%;
+    margin-top:0;
+}
+
+.contact h2 {
+    padding: 0 2%;
+}
+
+.contact form {
+    text-align: left;
+
+}
+
+.contact form p {
+    font-size: 0.75em;
+    padding: 0;
+    width: 100%;
+}
+
+#contact-close {
+    margin: 0;
+    padding: 1% 2%;
+    position:absolute;
+    font-size: 2em;
+    right:0;
+    color: rgba(255, 255, 255, 0.3);
+    pointer-events: initial;
+    cursor: pointer;
+}
+#contact-close:hover{
+    color: var(--clr-neon);
+    
+}
+
+.contact input {
+    height: 2em;
+    width: 100%;
+}
+
+textarea {
+    width: 100%;
+    height: 10em;
+
+}
+
+.mail-list {
+    display: flex;
+    padding: 3% 0;
+    flex-direction: row;
+    width: 100%;
+}
+
+.mail-list h5 {
+    margin: 0;
+    width: 50%;
+}
+
+#contact-button {
+    width: 100%;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+
+}
+
+.contact-button {
+    border: 0.1em solid currentColor;
+    margin: 10% 1%;
+    text-align: center;
+    pointer-events: initial;/*---------------DEACTIVATE IN JS WHEN NOT ACTIVE------------ */
+    width: 4em;
+    border-radius: 10px;
+}
+
+.contact-button:hover {
+    border: 0.15em solid var(--clr-neon);
+    color: #1f2126;
+    cursor: pointer;
+    box-shadow: 0 0 1em var(--clr-neon);
+    background-color: var(--clr-neon);
+}
+
+.contact-button:active {
+    border: none;
+    background-color: #1f2126;
+    color: var(--clr-neon);
+    box-shadow: 0 0 1em #fff;
+
+}
+
+
+input {
+    pointer-events: initial;/*---------------DEACTIVATE IN JS WHEN NOT ACTIVE------------ */
+
+}
+
+textarea {
+    pointer-events: initial;/*---------------DEACTIVATE IN JS WHEN NOT ACTIVE------------ */
+
+}
+
+
+.main {
+    color: #bdd3e5;
+    /* transition: opacity 1200ms ease; */
+    z-index: 3;
+    position: absolute;
+    pointer-events: none;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+
+    flex-direction: column;
+
+
+}
+
+.title {
+    transition: opacity 1200ms ease;
+}
+
+.name {
+
+    margin: 0px;
+
+    padding: 0;
+    font-family: 'Spectral SC', serif;
+    font-size: 6vw;
+    text-align: center;
+
+}
+
+
+.desc {
+    font-size: 3vw;
+    text-align: center;
+    z-index: 3;
+    font-family: 'Encode Sans Semi Condensed', sans-serif;
+
+}
+
+a,
+a:hover,
+a:visited,
+a:active {
+    color: inherit;
+    text-decoration: none;
+}
+
+.icon {
+
+
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    color: white;
+    z-index: 4;
+    font-size: 5rem;
+    display: flex;
+    flex-direction: row;
+    margin-top: 5%;
+    width: 100%;
+    justify-content: center;
+
+
+}
+
+.i {
+    mArgin: 0 1%;
+    pointer-events: initial;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.card-container {
+    width: 100vw;
+    height: 100vh;
+
+    padding-block: 2rem;
+
+    gap: 2em;
+    display: grid;
+
+    justify-items: center;
+
+    grid-template-areas: 
+    'tc'
+    'cb'
+    'ct'
+    'tl'
+    'bl'
+    'tr'
+    'br';
+    
+
+}
+@media (min-width: 50rem){
+    .card-container{
+        grid-template-areas: 
+    'tl tc tc tc tc tr'
+    'tl ct ct ct ct tr'
+    'bl ct ct ct ct br'
+    'bl ct ct ct ct br'
+    ;
+    }
+}
+
+.card {
+    box-shadow: 15px 15px 20px 0 rgba(0, 0, 0, 0.7);
+    color: white;
+    width: 17vw;
+    height: 42.5vh;
+    z-index: 3 !important;
+    overflow: hidden;
+    font-family: 'Encode Sans Semi Condensed', sans-serif;
+    background-color: #1f2126;
+    border-radius: 10px;
+    outline: 5px solid #1f2126;
+
+}
+.top-content{
+    font-family: 'Spectral SC', serif;
+    color:white;
+    font-size: 3em;
+    width: 100%;
+    justify-items: initial;
+    display:flex;
+    justify-content: center;
+}
+.fa, .test{
+    margin: 2%;
+    padding: 0;
+    margin: 1%;
+
+}
+.svg{
+    width: 1.5em;
+}
+.test{
+}
+.fa{
+    font-size: 1.5em;
+    /* border-radius: 50%; */
+    /* box-shadow: 15px 15px 20px 0 rgba(0, 0, 0, 0.7); */
+    /* background-color: black; */
+}
+.html-badge{
+    color:red
+}
+.css-badge{
+    color:blue;
+}
+.js-badge{
+    color:yellow;
+}
+card-large{
+
+}
+
+.card:hover {
+    box-shadow: 0 10px 25px 0 var(--clr-neon);
+}
+
+.tr {
+    grid-area: tr;
+
+
+}
+
+.br {
+    grid-area: br;
+}
+
+.ct{
+    grid-area: ct;
+    height: 60vh;
+    width: 55vw;
+}
+
+.tc{
+    grid-area: tc;
+    height: 10vh;
+    width: 100%;
+}
+
+.tl {
+    grid-area: tl;
+}
+
+.bl {
+    grid-area: bl;
+}
+
+
+.card img {
+    border-radius: 5px 5px 0 0;
+    width: 100%;
+    height: 60%;
+}
+
+.content {
+    padding: 2px 16px;
+}
+
+.card h2 {
+    text-align: center;
+}
+
+.card-button {
+
+}
+
+.card-button-right {
+    border: 2px solid currentColor;
+
+}
+
+.card-button-left {
+    border: 2px solid currentColor;
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* .card-container {
+    width: 100vw;
+    height: 100vh;
+
+}
+
+.card {
+    box-shadow: 15px 15px 20px 0 rgba(0, 0, 0, 0.7);
+    color: white;
+    width: 17vw;
+    height: 42.5vh;
+    z-index: 3 !important;
+    position: absolute;
+    margin: 3% 2%;
+    overflow: hidden;
+    font-family: 'Encode Sans Semi Condensed', sans-serif;
+    background-color: #1f2126;
+    border-radius: 10px;
+    outline: 5px solid #1f2126;
+
+}
+
+.card:hover {
+    box-shadow: 0 10px 25px 0 var(--clr-neon);
+}
+
+.tr {
+    right: 0;
+}
+
+.br {
+    right: 0;
+    bottom: 0;
+}
+
+.tl {
+    left: 0;
+}
+
+.bl {
+    left: 0;
+    bottom: 0;
+}
+
+
+.card img {
+    border-radius: 5px 5px 0 0;
+    width: 100%;
+    height: 60%;
+}
+
+.content {
+    padding: 2px 16px;
+}
+
+.card h2 {
+    text-align: center;
+}
+
+.card-button {
+
+    position: absolute;
+    bottom: 3%;
+    width: 50%;
+}
+
+.card-button-right {
+    border: 2px solid currentColor;
+    padding: 1% 3%;
+    margin: 0 1%;
+}
+
+.card-button-left {
+    border: 2px solid currentColor;
+    padding: 1% 3%;
+    margin: 0 1%;
+
+}
+
+
+.resume-wrapper{
+    width:100vw;
+    height:100vh;
+    top:0;
+    padding:0;
+    margin:0;
+    position: absolute;
+    z-index: 0;
+    color:white;
+    font-family: 'Encode Sans Semi Condensed', sans-serif;
+}
+.resume-container{
+    width:60vw;
+    height:70vh;
+    top:0;
+    left: 50%;
+  transform: translate(-50%, 0);
+    padding:0;
+    margin:0;
+    position: absolute;
+}
+.resume-name{
+    position: absolute;
+    width:100%;
+    height: 8%;
+    text-align: center;
+    font-family: 'Spectral SC', serif;
+    font-size: 2em;
+    padding-top:0;
+    margin-top: 0;
+}
+.resume-name h1{
+    padding-top:0;
+    margin-top: 0;
+}
+.resume-skills{
+    position: absolute;
+    width:30%;
+    height:92%;
+    top: 8%;
+    display:flex;
+    text-align: center;
+    flex-direction: column;
+
+
+
+}
+.resume-skills h1{
+}
+.resume{
+    position: absolute;
+    width:70%;
+    height:92%;
+    right:0;
+
+    top:8%;
+    text-align: center;
+}
+.resume h1{
+} */
+
+
+
+/* SOMETHING HERE ALLOWS IT TO RENDER ON TOP */
+
+/* .title.desc {
+        font-family: 'Encode Sans Semi Condensed', sans-serif;
+        font-size: 3vw;
+        text-align:center;
+      } */
+
+/* .mountains {
+    opacity: 0.4;
+    position: absolute;
+
+
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+    left: 0;
+    z-index: 1;
+
+}
+
+.mountains.a {
+    background-image: url("img/background_mountain1.png");
+    background-repeat: repeat-x;
+    top: 67%;
+    opacity: 0.2 !important;
+
+}
+
+.mountains.b {
+    background-image: url("img/background_mountain2.png");
+    background-repeat: repeat-x;
+    top: 72%;
+    opacity: 0.3 !important;
+
+}
+
+.mountains.c {
+    background-image: url("img/background_mountain3.png");
+    background-repeat: repeat-x;
+    top: 77%;
+    opacity: 0.4 !important;
+
+}
+
+.mountains.d {
+    background-image: url("img/background_mountain4.png");
+    background-repeat: repeat-x;
+    top: 86%;
+    opacity: 0.5 !important;
+
+}
+
+.mountains.e {
+    background-image: url("img/background_mountain5.png");
+    background-repeat: repeat-x;
+    top: 90%;
+    opacity: 0.5 !important;
+
+} */
+
+.neon:hover {
+    border-radius: 50%;
+    color: var(--clr-neon);
+    cursor: pointer;
+    /* font-size: 1.1em; */
+
+
+    /* box-shadow: 0 0 1em var(--clr-neon),
+    0 0 0.75em #fff,
+    inset 0 0 0.5em var(--clr-neon) ,
+    inset 0 0 0.5 #fff; */
+
+}
